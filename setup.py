@@ -2,11 +2,11 @@ from setuptools import setup
 
 setup(
 	name='ao_seasoncount',
-	version='1.0',
+	version='',
 	packages=[''],
 	url='',
 	license='',
-	author='Минаев Роман',
+	author='OopsieDoopsie',
 	author_email='snakedom@yandex.ru',
 	description=''
 )
