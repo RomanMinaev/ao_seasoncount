@@ -25,11 +25,15 @@ async def on_message(message):
         await channel.send('AO Season points counter bot greetings you!')
 
     if message.content.startswith('..add'):
-        msg = message.content.split(' ')
-        ign = msg[1]
-        points = msg[2]
-        emote = dataman.points_add(ign, points)
-        await message.add_reaction(emote)
+        if discord.utils.get(username.roles, name='Mechanic') is None:
+            await message.add_reaction('💢')
+            await channel.send('😡 Insufficient rights. 😡')
+        else:
+            msg = message.content.split(' ')
+            ign = msg[1]
+            points = msg[2]
+            emote = dataman.points_add(ign, points)
+            await message.add_reaction(emote)
 
     if message.content.startswith('..leaderboard'):
         lb = dataman.leaderboard_show()
@@ -59,7 +63,11 @@ async def on_message(message):
             title='**AVAILABLE COMMANDS**',
             description='**..ao_hello** - Sends hello message, just for testing if bot is online.\n'
                         '\n'
+                        '**..ao_help** - Sends available commands.\n'
+                        '\n'
                         '**..add** - (ex: ..add Carl 200) Adds points to chosen participant.\n'
+                        'Requiers discord role **Mechanic**\n'
+                        '\n'
                         '*If negative value will be given, it will be substracted from saved value*\n'
                         '\n'
                         '**..leaderboard** - Shows Top 20 leaderboard.\n'
