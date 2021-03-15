@@ -54,7 +54,7 @@ async def on_message(message):
             await message.add_reaction('💔')
             await channel.send(f'🦀 {ign} is gone! 🦀')
 
-    if message.content.startswith('..help'):
+    if message.content.startswith('..ao_help'):
         embed_msg = discord.Embed(
             title='**AVAILABLE COMMANDS**',
             description='**..ao_hello** - Sends hello message, just for testing if bot is online.\n'
