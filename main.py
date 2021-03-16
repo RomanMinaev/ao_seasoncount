@@ -2,7 +2,7 @@ import discord
 import dataman
 
 bot_token_file = open('DISCORD TOKEN_test.txt', 'r')
-GUILD = 'SuSliK'
+GUILD = 'Fax'
 bot_token = bot_token_file.readline()
 client = discord.Client()
 
