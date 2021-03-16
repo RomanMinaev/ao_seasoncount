@@ -38,6 +38,7 @@ async def on_message(message):
     if message.content.startswith('..leaderboard'):
         lb = dataman.leaderboard_show()
         embed_msg = discord.Embed(
+            title='**LEADERBOARD:**',
             description=lb[1],
             color=discord.Color.gold()
         )

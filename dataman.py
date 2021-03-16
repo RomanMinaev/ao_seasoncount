@@ -38,26 +38,30 @@ def leaderboard_show():
 	leaderboard_dict = dict(sorted(json_file.items(), key=operator.itemgetter(1), reverse=True))
 	leaderboard_ign_list = list(leaderboard_dict.keys())
 	print(leaderboard_ign_list)
-	embed_description = f'1. **{leaderboard_ign_list[0]}** : {leaderboard_dict[leaderboard_ign_list[0]]}\n' \
-	                    f'2. **{leaderboard_ign_list[1]}** : {leaderboard_dict[leaderboard_ign_list[1]]}\n' \
-	                    f'3. **{leaderboard_ign_list[2]}** : {leaderboard_dict[leaderboard_ign_list[2]]}\n' \
-	                    f'4. **{leaderboard_ign_list[3]}** : {leaderboard_dict[leaderboard_ign_list[3]]}\n' \
-	                    f'5. **{leaderboard_ign_list[4]}** : {leaderboard_dict[leaderboard_ign_list[4]]}\n' \
-	                    f'6. **{leaderboard_ign_list[5]}** : {leaderboard_dict[leaderboard_ign_list[5]]}\n' \
-	                    f'7. **{leaderboard_ign_list[6]}** : {leaderboard_dict[leaderboard_ign_list[6]]}\n' \
-	                    f'8. **{leaderboard_ign_list[7]}** : {leaderboard_dict[leaderboard_ign_list[7]]}\n' \
-	                    f'9. **{leaderboard_ign_list[8]}** : {leaderboard_dict[leaderboard_ign_list[8]]}\n' \
-	                    f'10. **{leaderboard_ign_list[9]}** : {leaderboard_dict[leaderboard_ign_list[9]]}\n' \
-	                    f'11. **{leaderboard_ign_list[10]}** : {leaderboard_dict[leaderboard_ign_list[10]]}\n' \
-	                    f'12. **{leaderboard_ign_list[11]}** : {leaderboard_dict[leaderboard_ign_list[11]]}\n' \
-	                    f'13. **{leaderboard_ign_list[12]}** : {leaderboard_dict[leaderboard_ign_list[12]]}\n' \
-	                    f'14. **{leaderboard_ign_list[13]}** : {leaderboard_dict[leaderboard_ign_list[13]]}\n' \
-	                    f'15. **{leaderboard_ign_list[14]}** : {leaderboard_dict[leaderboard_ign_list[14]]}\n' \
-	                    f'16. **{leaderboard_ign_list[15]}** : {leaderboard_dict[leaderboard_ign_list[15]]}\n' \
-	                    f'17. **{leaderboard_ign_list[16]}** : {leaderboard_dict[leaderboard_ign_list[16]]}\n' \
-	                    f'18. **{leaderboard_ign_list[17]}** : {leaderboard_dict[leaderboard_ign_list[17]]}\n' \
-	                    f'19. **{leaderboard_ign_list[18]}** : {leaderboard_dict[leaderboard_ign_list[18]]}\n' \
-	                    f'20. **{leaderboard_ign_list[19]}** : {leaderboard_dict[leaderboard_ign_list[19]]}\n'
+	embed_description = ''
+	for i in range(len(leaderboard_ign_list)):
+		a = f'{i+1}. **{leaderboard_ign_list[i]}** : {leaderboard_dict[leaderboard_ign_list[i]]}\n'
+		embed_description = embed_description + a
+	#  embed_description = f'1. **{leaderboard_ign_list[0]}** : {leaderboard_dict[leaderboard_ign_list[0]]}\n' \
+	#                    f'2. **{leaderboard_ign_list[1]}** : {leaderboard_dict[leaderboard_ign_list[1]]}\n' \
+	#                    f'3. **{leaderboard_ign_list[2]}** : {leaderboard_dict[leaderboard_ign_list[2]]}\n' \
+	#                    f'4. **{leaderboard_ign_list[3]}** : {leaderboard_dict[leaderboard_ign_list[3]]}\n' \
+	#                    f'5. **{leaderboard_ign_list[4]}** : {leaderboard_dict[leaderboard_ign_list[4]]}\n' \
+	#                    f'6. **{leaderboard_ign_list[5]}** : {leaderboard_dict[leaderboard_ign_list[5]]}\n' \
+	#                    f'7. **{leaderboard_ign_list[6]}** : {leaderboard_dict[leaderboard_ign_list[6]]}\n' \
+	#                    f'8. **{leaderboard_ign_list[7]}** : {leaderboard_dict[leaderboard_ign_list[7]]}\n' \
+	#                    f'9. **{leaderboard_ign_list[8]}** : {leaderboard_dict[leaderboard_ign_list[8]]}\n' \
+	#                    f'10. **{leaderboard_ign_list[9]}** : {leaderboard_dict[leaderboard_ign_list[9]]}\n' \
+	#                    f'11. **{leaderboard_ign_list[10]}** : {leaderboard_dict[leaderboard_ign_list[10]]}\n' \
+	#                    f'12. **{leaderboard_ign_list[11]}** : {leaderboard_dict[leaderboard_ign_list[11]]}\n' \
+	#                    f'13. **{leaderboard_ign_list[12]}** : {leaderboard_dict[leaderboard_ign_list[12]]}\n' \
+	#                    f'14. **{leaderboard_ign_list[13]}** : {leaderboard_dict[leaderboard_ign_list[13]]}\n' \
+	#                    f'15. **{leaderboard_ign_list[14]}** : {leaderboard_dict[leaderboard_ign_list[14]]}\n' \
+	#                    f'16. **{leaderboard_ign_list[15]}** : {leaderboard_dict[leaderboard_ign_list[15]]}\n' \
+	#                    f'17. **{leaderboard_ign_list[16]}** : {leaderboard_dict[leaderboard_ign_list[16]]}\n' \
+	#                    f'18. **{leaderboard_ign_list[17]}** : {leaderboard_dict[leaderboard_ign_list[17]]}\n' \
+	#                    f'19. **{leaderboard_ign_list[18]}** : {leaderboard_dict[leaderboard_ign_list[18]]}\n' \
+	#                    f'20. **{leaderboard_ign_list[19]}** : {leaderboard_dict[leaderboard_ign_list[19]]}\n'
 	return leaderboard_dict, embed_description
 
 
