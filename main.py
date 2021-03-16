@@ -2,7 +2,7 @@ import discord
 import dataman
 
 bot_token_file = open('DISCORD TOKEN_test.txt', 'r')
-GUILD = 'Fax'
+GUILD = 'SuSliK'
 bot_token = bot_token_file.readline()
 client = discord.Client()
 
@@ -33,6 +33,7 @@ async def on_message(message):
             ign = msg[1]
             points = msg[2]
             emote = dataman.points_add(ign, points)
+            dataman.log_entry(ign, 'w', username.name, points)
             await message.add_reaction(emote)
 
     if message.content.startswith('..leaderboard'):
@@ -48,6 +49,19 @@ async def on_message(message):
         embed_msg.set_footer(text='OopsieDoopsie#0412')
         await channel.send(embed=embed_msg)
 
+    if message.content.startswith('..show'):
+        msg = message.content.split(' ')
+        ign = msg[1]
+        embed_msg = discord.Embed(
+            title='**Entries:**',
+            description=dataman.logs_show(ign),
+            color=discord.Color.dark_blue()
+        )
+        embed_msg.set_image(
+            url='https://cdn.mmos.com/wp-content/uploads/2020/08/albion-online-season-10-banner.jpg')
+        embed_msg.set_footer(text='OopsieDoopsie#0412')
+        await channel.send(embed=embed_msg)
+
     if message.content.startswith('..delete'):
         msg = message.content.split(' ')
         ign = msg[1]
@@ -57,6 +71,7 @@ async def on_message(message):
         else:
             dataman.ign_delete(ign)
             await message.add_reaction('💔')
+            dataman.log_entry(ign, 'd', username.name)
             await channel.send(f'🦀 {ign} is gone! 🦀')
 
     if message.content.startswith('..ao_help'):
@@ -67,14 +82,16 @@ async def on_message(message):
                         '**..ao_help** - Sends available commands.\n'
                         '\n'
                         '**..add** - (ex: ..add Carl 200) Adds points to chosen participant.\n'
-                        'Requiers discord role **Mechanic**\n'
+                        'Requires discord role **Mechanic**\n'
+                        '\n'
+                        '**..show** - (ex: ..show Carl) Shows all data changes of chosen participant.\n'
                         '\n'
                         '*If negative value will be given, it will be substracted from saved value*\n'
                         '\n'
                         '**..leaderboard** - Shows Top 20 leaderboard.\n'
                         '\n'
                         '**..delete** - (ex: ..delete Carl) Deletes participant from database.\n'
-                        'Requiers discord role **Mechanic**\n'
+                        'Requires discord role **Mechanic**\n'
                         '*CAUTION: THERE IS NO WAY TO RECOVER DELETED DATA*',
             color=discord.Color.green()
         )
